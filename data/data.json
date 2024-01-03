@@ -1,0 +1,28 @@
+{"PatientDetails":[
+   { "pid":"2rKnnYLvoSMPkl2imaf9d",
+    "fullname":"jon",
+    "gender": "Male",
+    "dob": "2024-01-02",
+    "refdoc": "Dr. 1",
+    "address": "mh",
+    "country": "India",
+    "state": "MH",
+    "mobile": "",
+    "email": "",
+    "note": "",
+    "image": ""},
+
+    { "pid":"65aefvja9o",
+    "fullname":"steve",
+    "gender": "Male",
+    "dob": "",
+    "refdoc": "",
+    "address": "goa",
+    "country": "",
+    "state": "",
+    "mobile": "",
+    "email": "",
+    "note": "",
+    "image": ""}
+]
+}
