@@ -1,25 +1,12 @@
 const express = require("express");
-const bodyParser = require("body-parser");
-const fs = require('fs');
 const app = express();
-const routes = express.Router()
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }));
-//const dataPath='../data/data.json';
+const routes = express.Router();
 const cors = require("cors")
 app.use(cors());
 var Utils = require("../Controller/controller");
-const sql=require('mssql');
-//const config=require('../Connection/config');
-const config = {
-    user: 'root',
-    password: 'root',
-    server: 'PRAKHART',
-    database: 'testdb',
-    options: {
-      encrypt: false, 
-    },
-  };
+
+
+
 
 module.exports=function (){
     routes.get('/patient', async(req, res) => {
