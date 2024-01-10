@@ -18,21 +18,38 @@ module.exports.fetchdata = async function () {
 module.exports.change = async function (id, data) {
   console.log("data in change:", data);
   console.log("pid:", id);
-  const fet = await req.query(`UPDATE PatientDetails SET fullname='${data.fullname}',gender='${data.gender}',dob='${data.dob}',refdoc='${data.refdoc}',address='${data.address}',country='${data.country}',state='${data.state}',mobile='${data.mobile}',email='${data.email}',note='${data.note}',image='${data.image}' WHERE pid='${id}';`)
-  console.log("in change fet:", fet);
-
+  try {
+    const fet = await req.query(`UPDATE PatientDetails SET fullname='${data.fullname}',gender='${data.gender}',dob='${data.dob}',refdoc='${data.refdoc}',address='${data.address}',country='${data.country}',state='${data.state}',mobile='${data.mobile}',email='${data.email}',note='${data.note}',image='${data.image}' WHERE pid='${id}';`)
+      return fet.rowsAffected;
+  } catch (error) {
+    return error
+  }
 }
 
 module.exports.save = function (data) {
-  console.log("incoming data", data);
-  const fet = req.query(`INSERT into PatientDetails values ('${data.pid}','${data.fullname}','${data.gender}','${data.dob}','${data.refdoc}','${data.address}','${data.country}','${data.state}','${data.mobile}','${data.email}','${data.note}','${data.image}')`);
-  console.log("fet:", fet);
+  console.log("inside save query func incoming data", data);
+  try {
+    const res = req.query(`INSERT into PatientDetails values ('${data.pid}','${data.fullname}','${data.gender}','${data.dob}','${data.refdoc}','${data.address}','${data.country}','${data.state}','${data.mobile}','${data.email}','${data.note}','${data.image}')`);
+    return res;
+  } catch (error) {
+    console.log("error in save:",error);
+    return error
+  }
+  
 }
 
 module.exports.delete = function (pid) {
   console.log("incoming id", pid);
-  const fet = req.query(`DELETE FROM PatientDetails WHERE pid='${pid}';`);
-  console.log("fet:", fet);
+  try {
+    const fet = req.query(`DELETE FROM PatientDetails WHERE pid='${pid}';`).then((res)=>{
+      return res.rowsAffected;
+    });
+    console.log("fet from delete",fet);  
+    
+  } catch (error) {
+    return error;
+  }
+  
 }
 
 

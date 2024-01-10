@@ -9,8 +9,13 @@ app.use(cors());
 const MainRoutes=require('./Routes/route')();
 
 
-app.use(MainRoutes);
 
+try {
+    app.use(MainRoutes);
+} catch (error) {
+    console.log("error on first",error);
+
+}
 
 app.listen(9000, () => {
 

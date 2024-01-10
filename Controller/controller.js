@@ -19,8 +19,10 @@ module.exports.getData = async function () {
 }
 
 module.exports.saveData = function (data) {
+    console.log("inside saveData");
     const savedResponse = dbutils.save(data);
     console.log("savedResponse", savedResponse);
+    return savedResponse;
 }
 
 module.exports.editData = function (id, data) {

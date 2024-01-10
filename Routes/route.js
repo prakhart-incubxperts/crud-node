@@ -13,12 +13,12 @@ module.exports=function (){
         
         const accounts =await Utils.getData();
         console.log("accounts:",accounts);
-        console.log(accounts);
         res.send(accounts);
         
     })
 
     routes.post('/patient/add', (req, res) => {
+        console.log("inside post ");
         const save = Utils.saveData(req.body);
         res.send({ success: true, msg: 'patient added successfully' },"saveres:",save)
     })
