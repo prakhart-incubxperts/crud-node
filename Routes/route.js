@@ -17,8 +17,12 @@ module.exports=function (){
         
     })
 
+
     routes.post('/patient/add', (req, res) => {
         console.log("inside post ");
+        if(req.body.note=="undefined"||req.body.note==""||req.body.note==null){
+            req.body.note="-";
+        }
         const save = Utils.saveData(req.body);
         res.send({ success: true, msg: 'patient added successfully' },"saveres:",save)
     })
